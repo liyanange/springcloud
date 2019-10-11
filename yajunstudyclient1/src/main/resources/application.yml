@@ -1,0 +1,19 @@
+#没有默认 不配这个话 就看下面hystrix的时间
+feign:
+    client:
+        config:
+            #服务名 默认的话为所有默认加上那个
+            default:
+                connectTimeout: 5000
+                readTimeout: 5000
+            client:
+                connectTimeout: 5000
+                readTimeout: 5000
+#这个时间是管用的一旦开启 默认是一秒 和上面那个时间哪个小哪个管用
+hystrix:
+    command:
+        default:
+            execution:
+                isolation:
+                    thread:
+                        timeoutInMilliseconds: 10000

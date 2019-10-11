@@ -1,0 +1,19 @@
+server:
+  port: 8761
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+    #表示是否从server拉取注册信息 因为本身是一个单节点的server不需要 下面两个默认为true
+    fetch-registry: false
+    register-with-eureka: true
+  #关于这个自我保护机制 主要就是为了防止微服务和注册中心因为网络故障请求不同 但是微服务与服务之前是通的 避免在注册中心删除这个实例
+  server:
+    enable-self-preservation: true
+
+spring:
+  application:
+    name: 我是server
+
